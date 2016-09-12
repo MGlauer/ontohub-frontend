@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
   repositoryName: "",
   actions: {
     saveRepository() {
-      let model = this.store.createRecord('repository', {});
+      let namespace = this.get('model');
+      let model = this.store.createRecord('repository', { namespace });
       model.name = this.get('repositoryName');
       model.description = this.get('repositoryDescription');
 

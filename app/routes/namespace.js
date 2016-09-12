@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    return this.store.findAll('repository');
+  model(params) {
+    // return this.store.find('namespace', params.namespace_id);
   }
 });

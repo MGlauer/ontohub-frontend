@@ -3,6 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   model(params) {
     let namespace = this.modelFor('namespace');
-    return namespace.repositories;
+    return namespace.get('repositories');
   }
 });
