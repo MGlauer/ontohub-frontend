@@ -1,0 +1,7 @@
+{{#link-to 'namespace.repository.new'}}<button class="button">New</button>{{/link-to}}
+
+{{#each model as |repository|}}
+<h2>{{link-to repository.name 'namespace.repository.index' repository}}</h2>
+<p>{{repository.description}}</p>
+<hr/>
+{{/each}}

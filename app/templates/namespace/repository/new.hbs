@@ -1,0 +1,9 @@
+<form>
+  {{input type="text" placeholder="Repository name" value=repositoryName}}
+  {{#each model.errors.slug as |error|}}
+    {{error.message}}
+  {{/each}}
+  {{textarea value=repositoryDescription placeholder="Description"}}
+
+  <button {{action "saveRepository"}} class="success button">Save</button>
+</form>
