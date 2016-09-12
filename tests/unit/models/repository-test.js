@@ -11,9 +11,8 @@ describeModel(
   function() {
     // Replace this with your real tests.
     it('has a name', function() {
-      let model = this.subject();
-      // var store = this.store();
-      expect(model).to.be.ok;
+      let model = server.createList('repository', 1);
+      console.log(model);
     });
   }
 );
