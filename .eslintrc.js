@@ -9,6 +9,7 @@ module.exports = {
     'browser': true
   },
   rules: {
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }],
     "no-eval": ["error"],
     "brace-style": ["error", "1tbs", { "allowSingleLine": true }],
     "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
