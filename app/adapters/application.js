@@ -8,6 +8,16 @@ export default DS.JSONAPIAdapter.extend({
   // this can be helpful for development.
   // in production, the host for both rails and ember should be the same.
   host: ENV.host,
+  loginToken: Ember.inject.service('login-token'),
+  headers: Ember.computed('loginToken.token', function() {
+    let token = this.get('loginToken.token');
+
+    if(token) {
+      return {
+        "Authorization": `Bearer ${token}`
+      };
+    }
+  }),
 
   // allows the multiword paths in urls to be underscored
   pathForType: function(type) {
