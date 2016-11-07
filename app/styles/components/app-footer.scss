@@ -8,8 +8,10 @@
   padding: 1rem 0;
 
   .app-footer-content {
+    padding: 0 1rem 1rem 1rem;
     background-color: $light-gray;
-    column-count: 2;
+    // column-count: 2;
+    column-width: calc(400px - 2.5rem);
     column-gap: 3rem;
     column-rule: 1px solid $medium-gray;
     margin: 0 auto;
