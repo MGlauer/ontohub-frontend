@@ -8,89 +8,22 @@
           |  Repositories
           span.hollow.badge.float-right = model.repositories.length
       li.tabs-title
-        = link-to 'search-result' (query-params type='oms')
+        = link-to 'search-result' (query-params type='oms') class=(if typeOMS 'active')
           = fa-icon "code"
           |  OMS
           span.hollow.badge.float-right 0
       li.tabs-title
-        = link-to 'search-result' (query-params type='users' content=null)
+        = link-to 'search-result' (query-params type='users') class=(if typeUsers 'active')
           = fa-icon "users"
           |  Users
           span.hollow.badge.float-right = model.users.length
-    = unless typeUsers
-      h5 Content
-      ul.vertical.tabs#filters
-        li.tabs-title.is-active
-          = link-to 'search-result' (query-params content='ontology')
-            = fa-icon "sitemap"
-            |  Ontology
-            span.hollow.badge.float-right = model.repositories.length
-        li.tabs-title
-          = link-to 'search-result' (query-params content='model')
-            = fa-icon "asterisk"
-            |  Model
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params content='specification')
-            = fa-icon "dot-circle-o"
-            |  Specification
-            span.hollow.badge.float-right = model.users.length
-    = if typeRepositories
-      h5 Access
-      ul.vertical.tabs#filters
-        li.tabs-title
-          = link-to 'search-result' (query-params public_access='false')
-            = fa-icon "lock"
-            |  Private
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params public_access='true')
-            = fa-icon "unlock-alt"
-            |  Public
-            span.hollow.badge.float-right = model.users.length
-    = if typeOMS
-      h5 License
-      ul.vertical.tabs#filters
-        li.tabs-title.is-active
-          = link-to 'search-result' (query-params content='ontology')
-            | AFL
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params content='model')
-            | APSL
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params content='specification')
-            | GPL
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params content='specification')
-            | LGPL
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params content='specification')
-            | OSL
-            span.hollow.badge.float-right 0
-    = if typeUsers
-      h5 Type
-      ul.vertical.tabs#filters
-        li.tabs-title
-          = link-to 'search-result' (query-params public_access='false')
-            = fa-icon "user"
-            |  Personal Account
-            span.hollow.badge.float-right 0
-        li.tabs-title
-          = link-to 'search-result' (query-params public_access='true')
-            = fa-icon "users"
-            |  Team
-            span.hollow.badge.float-right = model.users.length
   .medium-9.columns
     .tab-content
       #results
         = if typeRepositories
           = if model.repositories
             = each model.repositories as |repo|
-              = search-result icon = "lock" title = repo.id route = 'namespace.show' thing = repo.namespace
+              = search-result icon = "lock" title = repo.id route = 'namespace.repository.show' thing = repo
                 p.help-text = repo.description
                 span.label = repo.content_type
           = else
@@ -105,5 +38,8 @@
           = if model.users
             = each model.users as |user|
               = search-result icon = "user" title = user.name route = 'namespace.show' thing = user
+                p
+                  = user.namespace.repositories.length
+                  |  repositories
           = else
             h1.text-center No users found.
