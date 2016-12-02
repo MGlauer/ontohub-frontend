@@ -55,5 +55,8 @@
     "loader.js": "~4.0.1",
     "npm-check-updates": "~2.8.6",
     "postcss-scss": "~0.4.0"
+  },
+  "dependencies": {
+    "vcr": "^0.0.4"
   }
 }
